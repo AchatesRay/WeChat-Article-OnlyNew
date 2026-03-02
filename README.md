@@ -29,7 +29,7 @@
 WeChat-Article-OnlyNew/
 ├── WeChat-Article-OnlyNew.py # 主程序脚本
 ├── requirements.txt # 依赖清单
-├── gzh.txt # 公众号 fakeid 列表（需手动创建）
+├── 公众号fakeid.txt # 公众号 fakeid 列表（需手动创建）
 ├── 公众号名字.txt # 公众号名称列表（需手动创建）
 └── README.md # 使用说明
 ```
@@ -57,14 +57,14 @@ python -c "import requests, selenium, bs4; print('依赖安装成功')"
 ## ⚙️ 配置说明
 ### 1. 准备公众号列表文件
 创建两个文本文件，放在脚本同目录下：
-(1) gzh.txt - 公众号 fakeid 列表，
+(1) 公众号fakeid.txt - 公众号 fakeid 列表，
 每行一个公众号的 fakeid，示例：
 ```plaintext
 Mzg4NTsdsfEwNA==
 MjM5sdsddsaSSA==
 ```
 (2) 公众号名字.txt - 公众号名称列表，
-每行一个公众号名称，需与gzh.txt行数一一对应，示例：
+每行一个公众号名称，需与公众号fakeid.txt行数一一对应，示例：
 ```plaintext
 解决方案
 大模型科普
@@ -76,7 +76,7 @@ MjM5sdsddsaSSA==
 LOGIN_CACHE_FILE = "wx_login_cache.json"  # 登录缓存文件
 CACHE_EXPIRE_HOURS = 72                   # 缓存有效期（3天）
 MIN_FILE_SIZE = 3 * 1024                  # 最小文件大小（3KB）
-SAVE_DIR = "公众号文章"                   # 文章保存目录
+BASE_SAVE_DIR = "公众号文章"              # 文章保存根目录（日期文件夹会生成在此目录下）
 RETRY_COUNT = 3                           # 请求重试次数
 RETRY_DELAY = 5                           # 重试延迟（秒）
 ```
@@ -94,7 +94,7 @@ python WeChat-Article-OnlyNew.py
 2、在浏览器中使用微信扫码登录公众号后台
 3、登录成功后，脚本自动提取 Token/Cookie 并保存到缓存
 4、浏览器自动关闭，开始批量爬取文章
-5、爬取完成后，文章保存在公众号文章目录下
+5、爬取完成后，按脚本运行日期创建文件夹，文件名包含公众号+日期+文章名
 ```
 ### 2. 后续运行（无需登录）
 缓存有效期内（3 天）再次运行脚本，会直接使用缓存的登录信息，无需启动浏览器和扫码：
@@ -102,7 +102,14 @@ python WeChat-Article-OnlyNew.py
 python wechat_crawler.py
 ```
 ### 3. 查看结果
-文章保存：按公众号名称分类保存在公众号文章目录下，格式为 Markdown
+文章保存：保存在`公众号文章/运行日期/`目录下（如`公众号文章/2026-03-02/`），文件名为「公众号名_日期_文章名.md」，格式为 Markdown
+```
+# 结构示例
+公众号文章/
+ └── 2026-03-02/
+       ├── 解决方案_2026-03-02_春节结束了...md
+       └── 腾讯科技_2026-03-02_微信最新功能...md
+```
 日志文件：
 ```
 wx_crawl.log：全流程详细日志（含登录、爬取、错误信息）
