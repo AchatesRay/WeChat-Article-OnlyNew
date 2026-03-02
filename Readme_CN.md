@@ -26,8 +26,8 @@
 
 将本项目文件保存到本地，确保包含以下核心文件：
 ```
-wechat_article_crawler/
-├── wechat_crawler.py # 主程序脚本
+WeChat-Article-OnlyNew/
+├── WeChat-Article-OnlyNew.py # 主程序脚本
 ├── requirements.txt # 依赖清单
 ├── gzh.txt # 公众号 fakeid 列表（需手动创建）
 ├── 公众号名字.txt # 公众号名称列表（需手动创建）
@@ -57,13 +57,13 @@ python -c "import requests, selenium, bs4; print('依赖安装成功')"
 ## ⚙️ 配置说明
 ### 1. 准备公众号列表文件
 创建两个文本文件，放在脚本同目录下：
-(1) gzh.txt - 公众号 fakeid 列表
+(1) gzh.txt - 公众号 fakeid 列表，
 每行一个公众号的 fakeid，示例：
 ```plaintext
 Mzg4NTsdsfEwNA==
 MjM5sdsddsaSSA==
 ```
-(2) 公众号名字 - 公众号名称列表
+(2) 公众号名字.txt - 公众号名称列表，
 每行一个公众号名称，需与gzh.txt行数一一对应，示例：
 ```plaintext
 解决方案
@@ -89,12 +89,13 @@ python WeChat-Article-OnlyNew.py
 # 若提示Python不是内部命令，使用完整路径或配置环境变量
 ```
 首次运行流程：
-脚本自动启动 Chrome 浏览器，打开微信公众平台登录页
-在浏览器中使用微信扫码登录公众号后台
-登录成功后，脚本自动提取 Token/Cookie 并保存到缓存
-浏览器自动关闭，开始批量爬取文章
-爬取完成后，文章保存在公众号文章目录下
-
+```
+1、脚本自动启动 Chrome 浏览器，打开微信公众平台登录页
+2、在浏览器中使用微信扫码登录公众号后台
+3、登录成功后，脚本自动提取 Token/Cookie 并保存到缓存
+4、浏览器自动关闭，开始批量爬取文章
+5、爬取完成后，文章保存在公众号文章目录下
+```
 ### 2. 后续运行（无需登录）
 缓存有效期内（3 天）再次运行脚本，会直接使用缓存的登录信息，无需启动浏览器和扫码：
 ```bash
@@ -103,9 +104,11 @@ python wechat_crawler.py
 ### 3. 查看结果
 文章保存：按公众号名称分类保存在公众号文章目录下，格式为 Markdown
 日志文件：
+```
 wx_crawl.log：全流程详细日志（含登录、爬取、错误信息）
 wx_article_log.log：爬取结果统计日志
-缓存文件：wx_login_cache.json（登录信息缓存，请勿手动修改）
+wx_login_cache.json：缓存文件（登录信息缓存，请勿手动修改）
+```
 ### 📁 输出示例
 文章文件示例（Markdown）
 ```markdown
@@ -162,5 +165,6 @@ pip install beautifulsoup4>=4.12.2
 爬取频率请适度，避免给微信服务器造成压力
 
 因使用本工具产生的任何法律责任，由使用者自行承担
+
 
 
