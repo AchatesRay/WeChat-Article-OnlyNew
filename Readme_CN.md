@@ -1,4 +1,3 @@
-markdown
 # 微信公众号最新文章爬取工具
 
 [![Python Version](https://img.shields.io/badge/python-3.7%2B-blue)](https://www.python.org/)
@@ -30,9 +29,8 @@ wechat_article_crawler/
 ├── wechat_crawler.py # 主程序脚本
 ├── requirements.txt # 依赖清单
 ├── gzh.txt # 公众号 fakeid 列表（需手动创建）
-├── 公众号名字 # 公众号名称列表（需手动创建）
+├── 公众号名字.txt # 公众号名称列表（需手动创建）
 └── README.md # 使用说明
-plaintext
 
 ### 2. 安装依赖
 
@@ -58,13 +56,13 @@ python -c "import requests, selenium, bs4; print('依赖安装成功')"
 (1) gzh.txt - 公众号 fakeid 列表
 每行一个公众号的 fakeid，示例：
 plaintext
-Mzg4NTQ0MzEwNA==
-MjM5MjAxNjE2MA==
+Mzg4NTsdsfEwNA==
+MjM5sdsddsaSSA==
 (2) 公众号名字 - 公众号名称列表
 每行一个公众号名称，需与gzh.txt行数一一对应，示例：
 plaintext
-解决方案营销
-腾讯科技
+解决方案
+大模型科普
 ❗ 重要：两个文件的行数必须一致，否则会报错
 2. 配置参数（可选）
 脚本内可调整的核心配置（在wechat_crawler.py顶部）：
@@ -106,31 +104,18 @@ wx_article_log.log：爬取结果统计日志
 markdown
 # 春节结束了，得去见客户了，除了聊假期，还能和客户聊点儿什么？
 
-**公众号**：解决方案营销
+**公众号**：解决方案
 **发布时间**：2026-02-28 10:00:00
 **原文链接**：https://mp.weixin.qq.com/s/xxxxxx
 
 ## 摘要
-春节后首次见客户，除了常规的假期问候，还可以从这几个角度切入...
+春节后首次见客户，还可以从这几个角度切入...
 
 ## 完整正文
-春节假期已经结束，很多销售开始恢复客户拜访...
+春节假期已经结束，...
 （完整的文章正文内容）
-控制台输出示例
-plaintext
-===== 微信公众号最新文章爬取工具（完整正文版）=====
-✅ 使用缓存的登录信息
-✅ 成功加载 1 个公众号
-🚀 开始爬取 1 个公众号的最新文章...
 
---- 处理公众号：解决方案营销（fakeid：Mzg4NTQ0MzEwNA==）---
-✅ 成功提取文章完整正文（1568字符）
-✅ 文章保存成功: 公众号文章\解决方案营销\春节结束了，得去见客户了，除了聊假期，还能和客户聊点儿什么？.md（大小：2048字节）
 
-===== 爬取完成 ======
-📊 统计：成功 1 篇 | 失败 0 篇
-📁 文章保存目录：D:\wechat_article_crawler\公众号文章
-📄 日志文件：D:\wechat_article_crawler\wx_crawl.log
 ❌ 常见问题解决
 问题 1：Chrome 启动失败 / 目录占用
 原因：系统残留 Chrome 进程或临时目录占用
@@ -167,4 +152,5 @@ pip install beautifulsoup4>=4.12.2
 本工具仅用于学习和研究目的，请勿用于商业用途
 使用本工具需遵守微信公众平台的使用规范，请勿爬取敏感信息
 爬取频率请适度，避免给微信服务器造成压力
+
 因使用本工具产生的任何法律责任，由使用者自行承担
