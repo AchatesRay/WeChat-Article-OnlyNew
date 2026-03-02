@@ -25,12 +25,14 @@
 ### 1. 克隆/下载项目
 
 将本项目文件保存到本地，确保包含以下核心文件：
+```
 wechat_article_crawler/
 ├── wechat_crawler.py # 主程序脚本
 ├── requirements.txt # 依赖清单
 ├── gzh.txt # 公众号 fakeid 列表（需手动创建）
 ├── 公众号名字.txt # 公众号名称列表（需手动创建）
 └── README.md # 使用说明
+```
 
 ### 2. 安装依赖
 
@@ -83,7 +85,7 @@ RETRY_DELAY = 5                           # 重试延迟（秒）
 ### 1. 首次运行（需要扫码登录）
 ```bash
 # 运行脚本
-python wechat_crawler.py
+python WeChat-Article-OnlyNew.py
 # 若提示Python不是内部命令，使用完整路径或配置环境变量
 ```
 首次运行流程：
@@ -92,6 +94,7 @@ python wechat_crawler.py
 登录成功后，脚本自动提取 Token/Cookie 并保存到缓存
 浏览器自动关闭，开始批量爬取文章
 爬取完成后，文章保存在公众号文章目录下
+
 ### 2. 后续运行（无需登录）
 缓存有效期内（3 天）再次运行脚本，会直接使用缓存的登录信息，无需启动浏览器和扫码：
 ```bash
@@ -159,4 +162,5 @@ pip install beautifulsoup4>=4.12.2
 爬取频率请适度，避免给微信服务器造成压力
 
 因使用本工具产生的任何法律责任，由使用者自行承担
+
 
