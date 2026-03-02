@@ -1,0 +1,25 @@
+# 核心爬虫依赖
+requests>=2.31.0
+selenium>=4.15.0
+beautifulsoup4>=4.12.2
+
+# 辅助依赖（二维码生成/图片处理，若使用早期版本需保留）
+qrcode>=7.4.2
+Pillow>=10.1.0
+
+# 可选依赖（解决SSL警告/提升稳定性）
+urllib3>=2.0.7
+
+#打开终端 / 命令提示符，进入requirements.txt所在目录，执行以下命令：pip install -r requirements.txt
+
+# 核心爬虫依赖（必须安装）
+# pip install requests>=2.31.0
+# pip install selenium>=4.15.0
+# pip install beautifulsoup4>=4.12.2
+
+# 辅助依赖（仅早期二维码版本需要，最新自动提取版可选）
+# pip install qrcode>=7.4.2
+# pip install Pillow>=10.1.0
+
+# 可选依赖（解决SSL警告）
+# pip install urllib3>=2.0.7
